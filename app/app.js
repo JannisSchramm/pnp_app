@@ -5,6 +5,7 @@ var app = angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
   'mobile-angular-ui',
+  'ngStorage',
   'menuController',
   'favoritesController'
 ]);
@@ -30,7 +31,7 @@ app.config([
             //controller: 'dsCtrl',
             resolve: {
                 factory: function ($rootScope) {
-                    $rootScope.headline = "DS";
+                    $rootScope.headline = "Dungeon Slayers";
                 }
             }
         }).otherwise({

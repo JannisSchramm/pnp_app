@@ -1,10 +1,14 @@
 'use strict';
 
-dsController = angular.module('dsController', []);
-//Controller for navigation menu
-dsController.controller('DsCtrl', ['$scope',
-    function($scope) {
+var dsController = angular.module('dsController', []);
 
+dsController.controller('DsCtrl', ['$scope', '$localStorage',
+    function($scope, $localStorage) {
+        $scope.showNew = false;
+
+        $scope.saveNewChar = function() {
+
+        }
         /*$scope.redirectToTimeline = function() {
          $location.path('/timeline');
          };
