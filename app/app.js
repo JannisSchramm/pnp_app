@@ -7,7 +7,8 @@ var app = angular.module('myApp', [
   'mobile-angular-ui',
   'ngStorage',
   'menuController',
-  'favoritesController'
+  'favoritesController',
+  'dsController'
 ]);
 
 app.run(function () {
@@ -28,7 +29,7 @@ app.config([
             }
         }).when('/ds', {
             templateUrl: 'ds/ds.html',
-            //controller: 'dsCtrl',
+            controller: 'DsCtrl',
             resolve: {
                 factory: function ($rootScope) {
                     $rootScope.headline = "Dungeon Slayers";
