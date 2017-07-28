@@ -12,8 +12,19 @@
                 <input type="text" class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty"
                        ng-model="newName">
                 Volk:
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty"
-                       ng-model="newRace">
+                <select class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty" ng-model="newRace">
+                    <option value="Mensch">Mensch</option>
+                    <option value="Elf">Elf</option>
+                    <option value="Zwerg">Zwerg</option>
+                </select>
+                Klasse:
+                <select class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty" ng-model="newClass">
+                    <option value="Krieger">Krieger</option>
+                    <option value="Späher">Späher</option>
+                    <option value="Heiler">Heiler</option>
+                    <option value="Zauberer">Zauberer</option>
+                    <option value="Schwarzmagier">Schwarzmagier</option>
+                </select>
                 Level:
                 <input type="number" class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty"
                        ng-model="newLvl" min="1" max="20">

@@ -11,7 +11,11 @@ var app = angular.module('myApp', [
   'dsController'
 ]);
 
-app.run(function () {
+app.run(function ($localStorage) {
+    if($localStorage.characters == null) {
+        $localStorage.characters = [];
+        console.log("Characters initialized");
+    }
     console.log("App running!");
 });
 

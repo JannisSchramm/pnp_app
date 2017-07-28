@@ -9,7 +9,7 @@ favoritesController.controller('FavCtrl', ['$scope', '$localStorage', 'character
             $scope.favorites = characterListService.getFavoriteCharacterList();
         }
 
-        $scope.showCharacter = function(character) {
+        $scope.showCharacter = function(id) {
 
         }
 

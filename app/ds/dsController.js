@@ -11,7 +11,7 @@ dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListServ
         }
 
         $scope.saveNewChar = function() {
-            if($localStorage.characters == null) {
+            if($localStorage.characters.length == 0) {
                 $localStorage.characters = [];
             }
             var newChar = createNewChar();
@@ -28,6 +28,7 @@ dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListServ
                 "favorite": false,
                 "name": $scope.newName,
                 "race": $scope.newRace,
+                "class": $scope.newClass,
                 "lvl": $scope.newLvl,
                 "experience": $scope.newExperience,
                 "info": {
@@ -60,6 +61,28 @@ dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListServ
             };
             return createChar;
         };
+
+        $scope.showCharacter = function(id) {
+
+        }
+
+        $scope.removeCharacter = function(id) {
+            for (var i = 0; i < $localStorage.characters.length; i++) {
+                if($localStorage.characters[i].id == id) {
+                    $localStorage.characters.splice(i,1);
+                    loadCharacters();
+                    return true;
+                }
+            }
+        }
+
+        $scope.addFavorite = function(id) {
+            for (var i = 0; i < $localStorage.characters.length; i++) {
+                if($localStorage.characters[i].id == id) {
+                    $localStorage.characters[i].favorite = true;
+                }
+            }
+        }
 
         loadCharacters();
         /*$scope.redirectToTimeline = function() {
