@@ -13,17 +13,11 @@
                        ng-model="newName">
                 Volk:
                 <select class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty" ng-model="newRace">
-                    <option value="Mensch">Mensch</option>
-                    <option value="Elf">Elf</option>
-                    <option value="Zwerg">Zwerg</option>
+                    <option ng-repeat="race in races" value="race.name">{{race.name}}</option>
                 </select>
                 Klasse:
                 <select class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty" ng-model="newClass">
-                    <option value="Krieger">Krieger</option>
-                    <option value="Späher">Späher</option>
-                    <option value="Heiler">Heiler</option>
-                    <option value="Zauberer">Zauberer</option>
-                    <option value="Schwarzmagier">Schwarzmagier</option>
+                    <option ng-repeat="class in classes" value="class.name">{{class.name}}</option>
                 </select>
                 Level:
                 <input type="number" class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty"

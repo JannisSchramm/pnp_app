@@ -2,12 +2,25 @@
 
 var dsController = angular.module('dsController', []);
 
-dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListService',
-    function($scope, $localStorage, characterListService) {
+dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListService', 'loadJsonService',
+    function($scope, $localStorage, characterListService, loadJsonService) {
         $scope.showNew = false;
+        load();
+
+        function load() {
+            loadJsonService.loadJsonFromFile("../resources/ds/dsClass.json", function(response) {
+                $scope.classes = JSON.parse(response);
+            });
+            loadJsonService.loadJsonFromFile("../resources/ds/dsRace.json", function(response) {
+                $scope.races = JSON.parse(response);
+            });
+            /*loadJsonService.loadJsonFromFile("../resources/ds/dsTalent.json", function(response) {
+                $scope.talents = JSON.parse(response);
+            });*/
+        }
 
         var loadCharacters = function() {
-            $scope.characters = characterListService.getGameCharacterList("ds");
+            $scope.characters = characterListService.getGameCharacterList("Dungeon Slayers");
         }
 
         $scope.saveNewChar = function() {
@@ -24,7 +37,7 @@ dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListServ
         var createNewChar = function() {
             var createChar = {
                 "id": new Date().getTime(),
-                "game": "ds",
+                "game": "Dungeon Slayers",
                 "favorite": false,
                 "name": $scope.newName,
                 "race": $scope.newRace,
