@@ -2,8 +2,8 @@
 
 var dsController = angular.module('dsController', []);
 
-dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListService', 'loadJsonService',
-    function($scope, $localStorage, characterListService, loadJsonService) {
+dsController.controller('DsCtrl', ['$scope', '$localStorage', '$location', 'characterListService', 'loadJsonService', 'characterIdProvider',
+    function($scope, $localStorage, $location, characterListService, loadJsonService, characterIdProvider) {
         $scope.showNew = false;
         load();
 
@@ -14,7 +14,7 @@ dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListServ
             loadJsonService.loadJsonFromFile("../resources/ds/dsRace.json", function(response) {
                 $scope.races = JSON.parse(response);
             });
-            /*loadJsonService.loadJsonFromFile("../resources/ds/dsTalent.json", function(response) {
+            /* TODO loadJsonService.loadJsonFromFile("../resources/ds/dsTalent.json", function(response) {
                 $scope.talents = JSON.parse(response);
             });*/
         }
@@ -70,13 +70,19 @@ dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListServ
                     "mind": $scope.newMind,
                     "aura": $scope.newAura
                 },
+                "talents": {},
+                "inventory": {},
+                "consumables": {},
+                "weapons": {},
+                "armor": {},
                 "notes": $scope.newNotes
             };
             return createChar;
         };
 
         $scope.showCharacter = function(id) {
-
+            characterIdProvider.setCharacterId(id);
+            $location.path('/dsCharacter');
         }
 
         $scope.removeCharacter = function(id) {
@@ -98,12 +104,4 @@ dsController.controller('DsCtrl', ['$scope', '$localStorage', 'characterListServ
         }
 
         loadCharacters();
-        /*$scope.redirectToTimeline = function() {
-         $location.path('/timeline');
-         };
-
-         $scope.redirectToMaps = function() {
-         $location.path('/maps');
-         };*/
-
     }]);

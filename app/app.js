@@ -8,7 +8,8 @@ var app = angular.module('myApp', [
   'ngStorage',
   'menuController',
   'favoritesController',
-  'dsController'
+  'dsController',
+  'dsCharacterSheetController'
 ]);
 
 app.run(function ($localStorage) {
@@ -37,6 +38,14 @@ app.config([
             resolve: {
                 factory: function ($rootScope) {
                     $rootScope.headline = "Dungeon Slayers";
+                }
+            }
+        }).when('/dsCharacter', {
+            templateUrl: 'dsCharacterSheet/dsCharacterSheet.html',
+            controller: 'DsCharacterCtrl',
+            resolve: {
+                factory: function ($rootScope) {
+                    $rootScope.headline = 'Character Sheet';
                 }
             }
         }).otherwise({
