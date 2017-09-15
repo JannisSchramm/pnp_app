@@ -36,11 +36,15 @@
   {"name": "Werfen", "startValue": 20},
   {"name": "Werte schätzen", "startValue": 5}]},
 
-  {"category": [{"name": "Fremdsprache", "startValue": 1},
-    {"name": "Handwerk/Kunst", "startValue": 5},
-    {"name": "Muttersprache", "startValue": 0},
-    {"name": "Naturwissenschaft", "startValue": 1},
-    {"name": "Steuern", "startValue": 1},
-    {"name": "Überlebenskunst", "startValue": 10}
-               ]}
+  {"category": [{"name": "Fremdsprache", "startValue": 1, "abilities": []},
+    {"name": "Handwerk/Kunst", "startValue": 5, "abilities": []},
+    {"name": "Muttersprache", "startValue": 0, "abilities": []},
+    {"name": "Naturwissenschaft", "startValue": 1, "abilities": []},
+    {"name": "Steuern", "startValue": 1, "abilities": []},
+    {"name": "Überlebenskunst", "startValue": 10, "abilities": []}]},
+
+  {"fight": [{"name": "Ausweichen", "startValue": 0},
+    {"name": "Nahkampf (Handgemenge)", "startValue": 25},
+    {"name": "Fernkampf (Faustfeuerwaffe)", "startValue": 20},
+    {"name": "Fernkampf (Gewehr/Flinte)", "startValue": 25}]}
 ]

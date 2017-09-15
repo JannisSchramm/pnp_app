@@ -80,9 +80,26 @@
                 <div class="cthulhu-ability" ng-repeat="ability in abilities[0].ability">
                     {{ability.name}}:
                     <input type="number" class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty" min={{ability.startValue}}
-                           ng-model=ability.value>
+                           value={{ability.startValue}} ng-model=ability.value>
                 </div>
                 <br>
+                <div ng-repeat="category in abilities[1].category">
+                    {{category.name}}:
+                    <br>
+                    <div class="cthulhu-ability" ng-repeat="ability in category.abilities">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty"
+                               placeholder={{category.name}} ng-model=ability.name if>
+                        <input type="number" class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty" min={{category.startValue}}
+                               value={{category.startValue}} ng-model=ability.value>
+                    </div>
+                    <button class="btn btn-primary btn-block" ng-click="category.abilities.push({})">+</button>
+                </div>
+                <br>
+                <div class="cthulhu-ability" ng-repeat="ability in abilities[2].fight">
+                    {{ability.name}}:
+                    <input type="number" class="form-control ng-pristine ng-untouched ng-valid needsclick ng-not-empty" min={{ability.startValue}}
+                           value={{ability.startValue}} ng-model=ability.value>
+                </div>
                 <hr>
                 <button class="btn btn-primary btn-block" ng-click="saveNewChar()">Speichern</button>
             </form>

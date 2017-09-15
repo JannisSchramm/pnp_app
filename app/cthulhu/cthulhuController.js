@@ -13,7 +13,6 @@ dsController.controller('CthulhuCtrl', ['$scope', '$localStorage', '$location', 
             });
             loadJsonService.loadJsonFromFile("../resources/cthulhu/cthulhuAbility.json", function(response) {
                 $scope.abilities = JSON.parse(response);
-                console.log($scope.abilities[0]);
             });
         }
 
