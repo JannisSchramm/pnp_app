@@ -1,26 +1,24 @@
 'use strict';
 
-var dsController = angular.module('dsController', []);
+var cthulhuController = angular.module('cthulhuController', []);
 
-dsController.controller('DsCtrl', ['$scope', '$localStorage', '$location', 'characterListService', 'loadJsonService', 'characterIdProvider',
+dsController.controller('CthulhuCtrl', ['$scope', '$localStorage', '$location', 'characterListService', 'loadJsonService', 'characterIdProvider',
     function($scope, $localStorage, $location, characterListService, loadJsonService, characterIdProvider) {
         $scope.showNew = false;
         load();
 
         function load() {
-            loadJsonService.loadJsonFromFile("../resources/ds/dsClass.json", function(response) {
-                $scope.classes = JSON.parse(response);
+            loadJsonService.loadJsonFromFile("../resources/cthulhu/cthulhuProffesion.json", function(response) {
+                $scope.professions = JSON.parse(response);
             });
-            loadJsonService.loadJsonFromFile("../resources/ds/dsRace.json", function(response) {
-                $scope.races = JSON.parse(response);
+            loadJsonService.loadJsonFromFile("../resources/cthulhu/cthulhuAbility.json", function(response) {
+                $scope.abilities = JSON.parse(response);
+                console.log($scope.abilities[0]);
             });
-            /* TODO loadJsonService.loadJsonFromFile("../resources/ds/dsTalent.json", function(response) {
-                $scope.talents = JSON.parse(response);
-            });*/
         }
 
         var loadCharacters = function() {
-            $scope.characters = characterListService.getGameCharacterList("Dungeon Slayers");
+            $scope.characters = characterListService.getGameCharacterList("Cthulhu");
         }
 
         $scope.saveNewChar = function() {
@@ -37,44 +35,22 @@ dsController.controller('DsCtrl', ['$scope', '$localStorage', '$location', 'char
         var createNewChar = function() {
             var createChar = {
                 "id": new Date().getTime(),
-                "game": "Dungeon Slayers",
+                "game": "Cthulhu",
                 "favorite": false,
                 "name": $scope.newName,
-                "race": $scope.newRace,
-                "class": $scope.newClass,
-                "lvl": $scope.newLvl,
-                "experience": $scope.newExperience,
+                "profession": $scope.newProfession,
                 "info": {
                     "sex": $scope.newSex,
                     "birthplace": $scope.newBirthplace,
                     "birthday": $scope.newBirthday,
                     "age": $scope.newAge,
-                    "height": $scope.newHeight,
-                    "weight": $scope.newWeight,
-                    "hair": $scope.newHair,
-                    "eyes": $scope.newEyes,
-                    "special": $scope.newSpecial,
-                    "languages": $scope.newLanguages,
-                    "writing": $scope.newWriting
+                    "residence": $scope.newResidence
                 },
                 "attributes": {
-                    "body": $scope.newBody,
-                    "agility": $scope.newAgility,
-                    "spirit": $scope.newSpirit
                 },
-                "traits": {
-                    "strength": $scope.newStrength,
-                    "hardness": $scope.newHardness,
-                    "movement": $scope.newMovement,
-                    "dexterity": $scope.newDexterity,
-                    "mind": $scope.newMind,
-                    "aura": $scope.newAura
-                },
-                "talents": {},
+                "abilities": $scope.abilities,
                 "inventory": {},
-                "consumables": {},
                 "weapons": {},
-                "armor": {},
                 "notes": $scope.newNotes
             };
             return createChar;

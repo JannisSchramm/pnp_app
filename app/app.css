@@ -7,6 +7,7 @@
 .btn-right {
   display: inline;
   float: right;
+  height: 100%;
 }
 
 .dark-overlay {
@@ -25,4 +26,16 @@
   background-color: white;
   border-radius: 2%;
   padding: 2%;
+}
+
+.cthulhu-attribute {
+  display: inline-block;
+  width: 31%;
+  margin: 1%;
+}
+
+.cthulhu-ability {
+  display: inline-block;
+  width: 23%;
+  margin: 1%;
 }

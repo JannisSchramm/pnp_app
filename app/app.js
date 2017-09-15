@@ -9,7 +9,8 @@ var app = angular.module('myApp', [
   'menuController',
   'favoritesController',
   'dsController',
-  'dsCharacterSheetController'
+  'dsCharacterSheetController',
+  'cthulhuController'
 ]);
 
 app.run(function ($localStorage) {
@@ -46,6 +47,14 @@ app.config([
             resolve: {
                 factory: function ($rootScope) {
                     $rootScope.headline = 'Character Sheet';
+                }
+            }
+        }).when('/cthulhu', {
+            templateUrl: 'cthulhu/cthulhu.html',
+            controller: 'CthulhuCtrl',
+            resolve: {
+                factory: function ($rootScope) {
+                    $rootScope.headline = 'Cthulhu';
                 }
             }
         }).otherwise({
